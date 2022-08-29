@@ -191,7 +191,7 @@
 			<tr>
 			  <td align="center">${ i }</td>
 			  <td align="left"  title="Click : 회원정보 확인">${user.userId}</td>
-			  <td align="left">${user.userName}</td>
+			  <td align="left"><i class="glyphicon glyphicon-user"> </i> ${user.userName}</td>
 			  <td align="left">${user.email}</td>
 			  <td align="left">
 			  	<i class="glyphicon glyphicon-ok" id= "${user.userId}"></i>
