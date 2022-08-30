@@ -41,22 +41,14 @@
     
 	<script type="text/javascript">
 
-	function fncGetProductList(currentPage) {
-		//document.getElementById("currentPage").value = currentPage;
-		$("#currentPage").val(currentPage)
-		//document.detailForm.submit();
-		$("form").attr("method","POST").attr("action","/product/listProduct?menu=${param.menu}").submit();
-		
-		/* if(param.menu == 'search') {
-			$("form").attr("method","POST").attr("action","listProduct?menu=search").submit();
-		}else{
-			$("form").attr("method","POST").attr("action","listProduct?menu=manage").submit();
-		} */
-		
+	function fncGetProductList(currentPage) {		
+		$("#currentPage").val(currentPage)		
+		$("form").attr("method","POST").attr("action","/product/listProduct?menu=${param.menu}").submit();		
 	}
 	
 	$(function() {
-		$( "td.ct_btn01:contains('검색')").on("click", function(){
+		//$( "td.ct_btn01:contains('검색')").on("click", function(){
+			$( "button.btn.btn-default").on("click", function(){
 			fncGetProductList(1);
 		});
 	/* 	 $( ".ct_list_pop td:nth-child(3)").on("click", function() {			
@@ -64,25 +56,30 @@
 			self.location ="/product/getProduct?prodNo="+$(this).parent().attr("id").trim();
 		}); */
 		
-	$(function() {
+		if(${param.menu == 'search'}){
+		
+		$(function() {
 		$( "td:nth-child(2)").on("click" , function(){
+			console.log('aaa');
 			self.location ="/product/getProduct?prodNo="+$(this).parent().attr("id").trim();
 		});
 		
-		$(function)
-	})
-	}
-		
-		
-		 
+		$( "td:nth-child(2)").css("color", "blue");
+				
+		});
+			 
 		// $( ".ct_list_pop td:nth-child(3)").on("click", function() {
 
+			$(function() {
+						
 		 $( "td:nth-child(5) > i").on("click", function() {
 				console.log('ddd');
 			 	
 			 	if(${param.menu == 'search'}){			 		
 			 	
-			 	var prodNo = $(this).parent().attr("id").trim();
+			 	//var prodNo = $(this).parent().attr("id").trim();
+			 	//var prodNo = $(this).parent().attr("id");
+			 	var prodNo = $(this).next().val();
 			 				 				 	
  			 	$.ajax(
 			 			{
@@ -107,28 +104,36 @@
 			 											
 			 												console.log(displayValue);
 			 											$("h6").remove();
-			 										 	/* $("#"+prodNo+"").html(displayValue); */
 			 										 	
 			 										 	$("td[id='"+prodNo+"']").html(displayValue);
-			 										 	//$("td[id='"+prodNo+"']").dialog(); 
+			 										 	//$("#"+prodNo+"").html(displayValue);
 			 				}
-			 			}); 			 			
+			 			});
 			 	}
-			 	else{
-			 		self.location ="/product/updateProduct?prodNo="+$(this).parent().attr("id").trim()+"&menu=manage";
+			 });
+			});
+			 	}else{
+			 		//self.location ="/product/updateProduct?prodNo="+$(this).parent().attr("id").trim()+"&menu=manage";
+			 		$(function() {
+			 			$( "td:nth-child(2)").on("click", function(){
+			 				console.log('eeee');
+			 				self.location ="/product/updateProduct?prodNo="+$(this).parent().attr("id").trim();
+			 			});
+			 			$( "td:nth-child(2)").css("color", "green");
+			 			});
 			 		}
-			 	});		
+			 		
 		
 		$( ".ct_list_pop td:nth-child(2)").css("color", "blue");
 						
-		$( ".ct_list_pop:nth-child(4n+6)").css("background-color","whitesmoke");
+		$( ".ct_list_pop:nth-child(4n+2)").css("background-color","whitesmoke");
 		
 	});
 </script>
 </head>
 
-<body bgcolor="#ffffff" text="#000000">
-
+<!-- <body bgcolor="#ffffff" text="#000000"> -->
+<body>
 	<jsp:include page="/layout/toolbar.jsp"/>
 	
 	<div class="container">
@@ -143,39 +148,7 @@
 				전체 ${resultPage.totalCount } 건수, 현재 ${resultPage.currentPage } 페이지
 			</p>
 		</div>
-	
-<%--  <form name="detailForm" action="/listProduct.do?menu=${param.menu }" method="post"> --%>
-<%--  <form name="detailForm" action="/listProduct?menu=${param.menu }" method="post"> --%>
-<%--  <form name="detailForm" action="/product/listProduct?menu=${param.menu }" method="post"> --%>
-
-
-<%-- 
-<table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
-	<tr>
-		<td width="15" height="37">
-			<img src="/images/ct_ttl_img01.gif" width="15" height="37"/>
-		</td>
-		<td background="/images/ct_ttl_img02.gif" width="100%" style="padding-left:10px;">
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-				<tr>
-					<td width="93%" class="ct_ttl01"><
-			<c:if test="${param.menu == 'search'}">
-				상품 목록조회
-			</c:if>
-			<c:if test="${param.menu == 'manage'}">
-				상품관리
-			</c:if>			
-					</td>
-				</tr>
-			</table>
-		</td>
-		<td width="12" height="37">
-			<img src="/images/ct_ttl_img03.gif" width="12" height="37"/>
-		</td>
-	</tr>
-</table> --%>
-
-
+		
 		<div class="col-md-6 text-right">
 			<form class="form-inline" name="detailForm">		
 				<div class="form-group">
@@ -208,7 +181,8 @@
 				<th align="left">상품명</th>
 				<th align="center">가격</th>
 				<th align="center">등록일</th>
-				<th align="center">현재상태</th>
+				<th align="center">간략정보</th>
+				<th align="center">판매상태</th>
 			</tr>
 			</thead>
 	
@@ -226,111 +200,20 @@
 				<td align="left">
 					<i class="glyphicon glyphicon-ok" id="${product.prodNo }"></i>
 				<input type="hidden" value="${product.prodNo }">
-				</td>
+				<td align="left">${product.proTranCode }</td>				
 			</tr>
 			</c:forEach>
-
+			
 		</tbody>
 	</table>
 	
-	</div>
-
-
-
-
-
-<%-- <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
-	<tr>
-		<td colspan="11" >
-		전체 ${resultPage.totalCount} 건수, 현재 ${resultPage.currentPage } 페이지
-		</td>
-	</tr>
-	<tr>
-		<td class="ct_list_b" width="100">No</td>
-		<td class="ct_line02"></td>
-		<td class="ct_list_b" width="150">상품명</td>
-		<td class="ct_line02"></td>
-		<td class="ct_list_b" width="150">가격</td>
-		<td class="ct_line02"></td>
-		<td class="ct_list_b">등록일</td>	
-		<td class="ct_line02"></td>
-		<td class="ct_list_b">현재상태</td>	
-	</tr>
-	<tr>
-		<td colspan="11" bgcolor="808285" height="1"></td>
-	</tr>
-	
-	<c:set var="i" value="0" />
-	<c:forEach var="product" items="${list}">
-		<c:set var="i" value="${i+1}" />
-	 <tr class="ct_list_pop" id="${ product.prodNo}">	
-		<td align="center">${i}</td>
-		<td></td>
-		<c:if test="${param.menu == 'search'}">
-	 		<td align="left">
-	 			${product.prodName}
-	 		</td>  
-		</c:if>		
-		<c:if test="${param.menu == 'manage'}">
-			<td align="left">
-			${product.prodName}
-			</td>
-			
-		</c:if>
-		<td></td>
-		<td align="left">${product.price }</td>
-		<td></td>
-		<td align="left">${product.regDate }</td>
-		<td></td>
-		<td align="left">
-			현재상태
-		</td>
-	<!-- </tr> --> --%>
-	
- 	<tr>
+	</div>	
+  	<tr>
 	<td colspan="11" id="${product.prodNo}" bgcolor="D6D7D6" height="1"></td>
 	</tr>
-	
-	
-<%-- 	</c:forEach> --%>
-
-<!-- </table>	
-</div> -->
 
 
-<%-- <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
-	<tr>
-	
-		<td align="center">
-			<input type="hidden" id="currentPage" name="currentPage" value=""/>
-
-		<jsp:include page="../common/pageNavigator.jsp"/>
-		
-	 	<c:if test="${resultPage.currentPage <= resultPage.pageUnit }">
-				◀ 이전
-		</c:if>
-		
-		<c:if test="${resultPage.currentPage > resultPage.pageUnit }">
-			<a href="javascript:fncGetProductList('${ resultPage.currentPage-1}')">◀ 이전</a>
-		</c:if>
-		
-		<c:forEach var="i" begin="${resultPage.beginUnitPage}" end="${resultPage.endUnitPage }" step="1">
-			<a href="javascript:fncGetProductList('${ i }');">${ i }</a>
-		</c:forEach>
-		
-		<c:if test="${ resultPage.endUnitPage >= resultPage.maxPage }">
-				이후 ▶
-		</c:if>
-		<c:if test="${ resultPage.endUnitPage < resultPage.maxPage }">
-				<a href="javascript:fncGetProductList('${resultPage.endUnitPage+1}')">이후 ▶</a>
-		</c:if>
-		
-
-    	</td>
-	</tr>
-</table> --%>	
-	<jsp:include page="../common/pageNavigator_new.jsp"/>
-<!--  페이지 Navigator 끝 -->
+	<jsp:include page="../common/pageNavigator_new2.jsp"/>
 
 
 
