@@ -18,25 +18,48 @@
 	
 	
 	<!-- Bootstrap Dropdown Hover CSS -->
-   <link href="/css/animate.min.css" rel="stylesheet">
+   
    <link href="/css/bootstrap-dropdownhover.min.css" rel="stylesheet">
     <!-- Bootstrap Dropdown Hover JS -->
    <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
-   
+        
    
    <!-- jQuery UI toolTip 사용 CSS-->
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <!-- jQuery UI toolTip 사용 JS-->
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">  
+  	<!--  	jQuery UI toolTip 사용 JS -->
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <!-- <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js"></script> -->
+		
 	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
 	  body {
             padding-top : 50px;
-        }
+        }            
+        
     </style>
     
 <script type="text/javascript">
+
+
+/*  $( function() {
+    $("#datepicker").on("click", function(){
+    	alert("aqeq");	
+    });    
+  }); */
+  
+  /* $(function(){
+	  $("#datepicker").datepicker();
+	  	console.log($.datepicker());
+  }); */
+  
+  $( function() {
+	  $("#datepicker").on("click", function(){
+		  alert($.datepicker());
+	  });
+  });
+
+
 	function fncAddProduct() {
 		//Form 유효성 검증
 		/* 	var name = document.detailForm.prodName.value;
@@ -76,11 +99,11 @@
 				.submit();
 	}
 
+
 	$(function() {
 
-		$("td.ct_btn01:contains('등록')").on("click", function() {
-
-			alert($("td.ct_btn01:contains('등록')").html());
+		$("button.btn.btn-primary").on("click", function() {
+			//alert($("td.ct_btn01:contains('등록')").html());
 			fncAddProduct();
 		});
 	});
@@ -91,148 +114,83 @@
 
 	$(function() {
 
-		$("td.ct_btn01:contains('취소')").bind("click", function() {
-
+		$("a[href='#']").bind("click", function() {
 			$("form")[0].reset();
 		});
 	});
+
 </script>
 </head>
 
-<body bgcolor="#ffffff" text="#000000">
+<body>
 
 	<jsp:include page="/layout/toolbar.jsp" />
 	
 	<div class="container">
-
-	<form name="detailForm" method="POST" enctype="multipart/form-data">
-
-		<table width="100%" height="37" border="0" cellpadding="0"
-			cellspacing="0">
-			<tr>
-				<td width="15" height="37"><img src="/images/ct_ttl_img01.gif"
-					width="15" height="37" /></td>
-				<td background="/images/ct_ttl_img02.gif" width="100%"
-					style="padding-left: 10px;">
-					<table width="100%" border="0" cellspacing="0" cellpadding="0">
-						<tr>
-							<td width="93%" class="ct_ttl01">상품등록</td>
-							<td width="20%" align="right">&nbsp;</td>
-						</tr>
-					</table>
-				</td>
-				<td width="12" height="37"><img src="/images/ct_ttl_img03.gif"
-					width="12" height="37" /></td>
-			</tr>
-		</table>
-
-		<table width="100%" border="0" cellspacing="0" cellpadding="0"
-			style="margin-top: 13px;">
-			<tr>
-				<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-			</tr>
-			<tr>
-				<td width="104" class="ct_write">상품명 <img src
-						="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"></td>
-				<td bgcolor="D6D6D6" width="1"></td>
-				<td class="ct_write01">
-					<table width="100%" border="0" cellspacing="0" cellpadding="0">
-						<tr>
-							<td width="105"><input type="text" name="prodName"
-								class="ct_input_g" style="width: 150px; height: 25px"
-								maxLength="20"></td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-			</tr>
-			<tr>
-				<td width="104" class="ct_write">상품상세정보 <img
-					src="/images/ct_icon_red.gif" width="3" height="3"
-					align="absmiddle" />
-				</td>
-				<td bgcolor="D6D6D6" width="1"></td>
-				<td class="ct_write01"><input type="text" name="prodDetail"
-					class="ct_input_g" style="width: 150px; height: 25px"
-					maxLength="10" minLength="6" /></td>
-			</tr>
-			<tr>
-				<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-			</tr>
-			<tr>
-				<td width="104" class="ct_write">제조일자 <img
-					src="/images/ct_icon_red.gif" width="3" height="3"
-					align="absmiddle" />
-				</td>
-				<td bgcolor="D6D6D6" width="1"></td>
-				<td class="ct_write01"><input type="text" name="manuDate"
-					readonly="readonly" class="ct_input_g"
-					style="width: 150px; height: 25px" maxLength="10" minLength="6" />
-					&nbsp;<img src="../images/ct_icon_date.gif" width="15" height="15"
-					onclick="show_calendar('document.detailForm.manuDate', document.detailForm.manuDate.value)" />
-				</td>
-			</tr>
-			<tr>
-				<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-			</tr>
-			<tr>
-				<td width="104" class="ct_write">가격 <img
-					src="/images/ct_icon_red.gif" width="3" height="3"
-					align="absmiddle" />
-				</td>
-				<td bgcolor="D6D6D6" width="1"></td>
-				<td class="ct_write01"><input type="text" name="price"
-					class="ct_input_g" style="width: 150px; height: 25px"
-					maxLength="10">&nbsp;원</td>
-			</tr>
-			<tr>
-				<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-			</tr>
-			<tr>
-				<td width="104" class="ct_write">상품이미지</td>
-				<td bgcolor="D6D6D6" width="1"></td>
-				<td class="ct_write01"><input type="file" name="fileName"
-					class="ct_input_g" style="width: 200px; height: 25px"
-					maxLength="13" /></td>
-			</tr>
-			<tr>
-				<td height="1" colspan="3" bgcolor="D6D6D6"></td>
-			</tr>
-		</table>
-
-		<table width="100%" border="0" cellspacing="0" cellpadding="0"
-			style="margin-top: 10px;">
-			<tr>
-				<td width="53%"></td>
-				<td align="right">
-					<table border="0" cellspacing="0" cellpadding="0">
-						<tr>
-							<td width="17" height="23"><img src="/images/ct_btnbg01.gif"
-								width="17" height="23" /></td>
-							<td background="/images/ct_btnbg02.gif" class="ct_btn01"
-								style="padding-top: 3px;">
-								<%--  		<a href="javascript:fncAddProduct();">등록</a></td> --%>
-								등록
-							</td>
-							<td width="14" height="23"><img src="/images/ct_btnbg03.gif"
-								width="14" height="23" /></td>
-							<td width="30"></td>
-							<td width="17" height="23"><img src="/images/ct_btnbg01.gif"
-								width="17" height="23" /></td>
-							<td background="/images/ct_btnbg02.gif" class="ct_btn01"
-								style="padding-top: 3px;">
-								<%--  	<a href="javascript:resetData();">취소</a> --%> 취소
-							</td>
-							<td width="14" height="23"><img src="/images/ct_btnbg03.gif"
-								width="14" height="23" /></td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-		</table>
-	</div>
-	</form>
+	
+		<h1 class="bg-primary text-center">상 품 등 록</h1>
+		
+		<form class="form-horizontal">
+		
+			<div class="form-group">
+				<label for="prodName" class="col-sm-offset-1 col-sm-3 control-label">상 품 명</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="prodName" name="prodName" placeholder="상품명은 필수입니다">
+				</div>					
+			</div>
+			
+			<div class="form-group">
+				<label for="prodDetail" class="col-sm-offset-1 col-sm-3 control-label">상품상세정보</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="prodDetail" name="prodDetail" placeholder="상품상세정보는 필수입니다">
+				</div>		
+			</div>
+			
+			<div class="form-group">
+				<label for="manuDate1" class="col-sm-offset-1 col-sm-3 control-label">제조일자</label>
+				<div class="col-sm-4">
+				<input class="form-control" id="datepicker" name="manuDate" value="" />
+				</div>			    
+			</div>
+			
+			
+			<div class="form-group">
+				<label for="price" class="col-sm-offset-1 col-sm-3 control-label">가격</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="price" name="price" placeholder="가격은 필수입니다">
+				</div>		
+			</div>
+			
+			<div class="form-group">
+				<label for="prodRule" class="col-sm-offset-1 col-sm-3 control-label">상품 카테고리</label>
+				<div class="col-sm-4">
+					<select class="form-control">
+  					<option>가전/디지털</option>
+  					<option>식품</option>
+  					<option>가구/인테리어</option>
+					<option>스포츠/레저/자동차</option>
+					<option>기타</option>
+				</select>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="fileName" class="col-sm-offset-1 col-sm-3 control-label">상품이미지</label>
+				<div class="col-sm-4">
+					<input type="file" class="form-control" id="fileNamee" name="fileName">
+				</div>		
+			</div>
+			
+			
+			
+			<div class="form-group">
+				<div class="col-sm-offset-4  col-sm-4 text-center">
+		      		<button type="button" class="btn btn-primary"  >등 &nbsp;록</button>
+					<a class="btn btn-primary btn" href="#" role="button">취&nbsp;소</a>
+		    </div>
+			</div>
+		</form>	
+		</div>
+		
 </body>
 </html>

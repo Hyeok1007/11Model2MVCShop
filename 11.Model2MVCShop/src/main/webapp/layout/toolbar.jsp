@@ -5,11 +5,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+
 <!-- ToolBar Start /////////////////////////////////////-->
 <div class="navbar  navbar-inverse navbar-fixed-top">
 	
 	<div class="container">
-	       
+
 		<a class="navbar-brand" href="/index.jsp">Model2 MVC Shop</a>
 		
 		<!-- toolBar Button Start //////////////////////// -->
@@ -65,12 +70,13 @@
 	                 </c:if>
 	                 
 	              <!-- 구매관리 DrowDown -->
-	              <li class="dropdown">
-	                     <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+	               <li class="dropdown">
+	                     <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> 
 	                         <span >상품구매</span>
 	                         <span class="caret"></span>
 	                     </a>
 	                     <ul class="dropdown-menu">
+	                     	
 	                         <li><a href="/product/listProduct?menu=search">상 품 검 색</a></li>	                         
 	                         
 	                         <c:if test="${sessionScope.user.role == 'user'}">
@@ -83,12 +89,27 @@
 	                     </ul>
 	                 </li>
 	                 
+	                 <li class="dropdown">
+	                 	<a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> 
+	                         <span >카테고리별 상품조회</span>
+	                         <span class="caret"></span>	                       
+	                     </a>
+                     <ul class="dropdown-menu">
+                     	<li><a href="#"><i class="glyphicon glyphicon-print"></i>&nbsp;가전/디지털</a></li>
+                     	<li><a href="#"><i class="glyphicon glyphicon-apple"></i>&nbsp;식품</a></li>
+                     	<li><a href="#"><i class="glyphicon glyphicon-home"></i>&nbsp;가구/인테리어</a></li>
+                     	<li><a href="#"><i class="glyphicon glyphicon-sunglasses"></i>&nbsp;스포츠/레저/자동차</a></li>
+                     	<li><a href="#"><i class="glyphicon glyphicon-option-horizontal"></i>&nbsp;기타</a></li>
+					</ul>                               
+	                 
+	                 
 	                 <li><a href="#">etc...</a></li>
-	             </ul>
-	             
+	                </ul>	  	                
+	               
 	             <ul class="nav navbar-nav navbar-right">
 	                <li><a href="#">로그아웃</a></li>
 	            </ul>
+	         
 		</div>
 		<!-- dropdown hover END -->	       
 	    

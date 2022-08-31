@@ -88,7 +88,8 @@
 
 	$(function() {
 
-		$("td.ct_btn01:contains('취소')").on("click", function() {
+		//$("td.ct_btn01:contains('취소')").on("click", function() {
+		$("a[href='#']").on("click", function() {
 			history.go(-1);
 		});
 	});
@@ -107,21 +108,28 @@
 		<form class="form-horizontal">
 			
 			<div class="form-group">
-		    	<label for="prodName" class="col-sm-offset-1 col-sm-3 control-label">상 품 명</label>
+		    	<label for="prodName" class="col-sm-offset-1 col-sm-3 control-label">상 품 명<img
+					src="/images/ct_icon_red.gif" width="7" height="7"
+					align="absmiddle" /></label>
 		    	<div class="col-sm-4">
 		      		<input type="text" class="form-control" id="prodName" name="prodName" value="${product.prodName }" placeholder="상품명은 필수입니다">
 		    		</div>
 		 	 </div>
 		 	 
 		 	 <div class="form-group">
-		    	<label for="prodDetail" class="col-sm-offset-1 col-sm-3 control-label">상품상세정보</label>
+		    	<label for="prodDetail" class="col-sm-offset-1 col-sm-3 control-label">상품상세정보<img
+					src="/images/ct_icon_red.gif" width="7" height="7"
+					align="absmiddle" /></label>
 		    	<div class="col-sm-4">
-		      		<input type="prodDetail" class="form-control" id="prodDetail" name="prodDetail" value="${product.prodDetail }">
+		      		<%-- <input type="text" class="form-control" id="prodDetail" name="prodDetail" value="${product.prodDetail }" placeholder="상품상세정보는 필수입니다"> --%> 
+		      		 <textarea class="form-control" id="prodDetail" rows="3" placeholder="상품상세정보는 필수입니다"></textarea>
 		    	</div>
 		  	</div>
 		  	
 		  	<div class="form-group">
-		    	<label for="manuDate" class="col-sm-offset-1 col-sm-3 control-label">제조일자</label>
+		    	<label for="manuDate" class="col-sm-offset-1 col-sm-3 control-label">제조일자<img
+					src="/images/ct_icon_red.gif" width="7" height="7"
+					align="absmiddle" /></label>
 		    	<div class="col-sm-4">
 		      		<input type="text" class="form-control" id="manuDate" name="manuDate" placeholder="제조일자는 필수입니다" value="${product.manuDate }">
 		      		<img src="../images/ct_icon_date.gif" width="15" height="15"
@@ -130,16 +138,19 @@
 		 	</div>
 		 	
 		 	<div class="form-group">
-		    	<label for="price" class="col-sm-offset-1 col-sm-3 control-label">가 격</label>
+		    	<label for="price" class="col-sm-offset-1 col-sm-3 control-label">가 격<img
+					src="/images/ct_icon_red.gif" width="7" height="7"
+					align="absmiddle" /></label>
 		    	<div class="col-sm-4">
 		      		<input type="text" class="form-control" id="price" name="price" placeholder="가격은 필수입니다" value="${product.price }">
 		    	</div>
 		 	</div>
 		 	
 		 	<div class="form-group">
-		    		상품이미지		    	
+			 	<label for="price" class="col-sm-offset-1 col-sm-3 control-label">상품이미지</label>	
+			 	<div class="col-sm-4">	    	
 		      		<input type="file" class="form-control" id="fileName" name="fileName">
-		    	
+		    	</div>
 		 	</div>
 		 	
 		 	 <div class="form-group">
