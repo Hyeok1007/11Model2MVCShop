@@ -42,7 +42,19 @@
 
 	<script type="text/javascript">
 	
+	$(function() {
+
+		$("button.btn.btn-primary").on("click", function() {
+			self.location="/purchase/addPurchaseView?prod_no=${product.prodNo}"
+		});
+	});
 	
+	$(function() {
+
+		$("a[href='#']").bind("click", function() {
+			history.go(-1);
+		});
+	});
 	
 	
 	
@@ -108,47 +120,14 @@
 	  		<div class="col-xs-4 col-md-2 "><strong>등 록 일 자</strong></div>
 			<div class="col-xs-8 col-md-4">${product.regDate}</div>
 		</div>
-			
+		
+		
+			<div class="form-group">
+				<div class="col-sm-offset-4  col-sm-4 text-center">
+		      		<button type="button" class="btn btn-primary"  >구&nbsp;매</button>
+					<a class="btn btn-primary btn" href="#" role="button">이&nbsp;전</a>
+		    </div>
+			</div>			
 	</div>
-		<table width="100%" border="0" cellspacing="0" cellpadding="0"
-			style="margin-top: 10px;">
-			<tr>
-				<td width="53%"></td>
-				<td align="right">
-
-					<table border="0" cellspacing="0" cellpadding="0">
-						<tr>
-
-							<td width="17" height="23"><img src="/images/ct_btnbg01.gif"
-								width="17" height="23" /></td>
-				<!--  			<td background="/images/ct_btnbg02.gif" class="ct_btn01"
-								style="padding-top: 3px;"><a
-						 		href="/addPurchaseView.do?prod_no=${product.prodNo }">구매</a></td> -->
-						 		
-						 	<td background="/images/ct_btnbg02.gif" class="ct_btn01"
-								style="padding-top: 3px;"><a
-						 		href="/purchase/addPurchaseView?prod_no=${product.prodNo }">구매</a></td>	
-						 		
-						 		
-						 		
-							<td width="14" height="23"><img src="/images/ct_btnbg03.gif"
-								width="14" height="23"></td>
-							<td width="30"></td>
-
-							<td width="17" height="23"><img src="/images/ct_btnbg01.gif"
-								width="17" height="23" /></td>
-							<td background="/images/ct_btnbg02.gif" class="ct_btn01"
-								style="padding-top: 3px;"><a
-								href="javascript:history.go(-1)">이전</a></td>
-							<td width="14" height="23"><img src="/images/ct_btnbg03.gif"
-								width="14" height="23"></td>
-						</tr>
-					</table>
-
-				</td>
-			</tr>
-		</table>
-	</form>
-
 </body>
 </html>

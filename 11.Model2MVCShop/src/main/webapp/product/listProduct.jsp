@@ -35,21 +35,25 @@
 	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
 	  body {
-            padding-top : 50px;
-        }
-        
-       img {
-       		max-with: 100%;
-       		height: auto; 
-        }
-        
-       .thumbnail{
-       	position: relative;
-       }
+            padding-top : 50px;          
+        }	        
+			
+		.thumbnail {
+			display: flex;
+			height : 100%;
+		}
+		
+		.thumbnail img { 
+			min-height:50px; height:50px;
+		 }     
+		
+			         
+       
     </style>
     
 	<script type="text/javascript">
 
+	
 	function fncGetProductList(currentPage) {		
 		$("#currentPage").val(currentPage)		
 		$("form").attr("method","POST").attr("action","/product/listProduct?menu=${param.menu}").submit();		
@@ -145,7 +149,19 @@
 						
 		$( ".ct_list_pop:nth-child(4n+2)").css("background-color","whitesmoke");
 		
-	});
+	});	
+		
+		
+		
+
+	function change(value){
+	    document.querySelector('[for="modeToggle"]').innerHTML = value!='N'?"Dark Mode":"Light Mode";
+	    document.body.setAttribute("class",value!='N'?"dark":"light")
+	    document.querySelector('#modeToggle').checked = value!='N'?true:false;
+	}	
+	
+		
+		
 </script>
 </head>
 
@@ -158,7 +174,7 @@
 	<c:if test="${param.menu == 'search' }">
 	<div class="page-header text-info">
 		
-		<h3>상품목록조회</h3>		
+		<h3>상품목록조회</h3>
 	</div>
 	</c:if>
 	
@@ -175,6 +191,11 @@
 				전체 ${resultPage.totalCount } 건수, 현재 ${resultPage.currentPage } 페이지
 			</p>
 		</div>
+		
+		 <div class="float-end me-3 form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                    <label class="form-check-label fw-bold" for="flexSwitchCheckChecked">Dark Mode</label>
+                </div>
 		
 		<div class="col-md-6 text-right">
 			<form class="form-inline" name="detailForm">		
@@ -213,8 +234,8 @@
 	<c:set var="i" value="0"/>
 	<c:forEach var="product" items="${list }">
 	<c:set var="i" value="${i+1 }" />
-	<div class="col-md-6 col-md-4">
-    <div class="thumbnail">    
+	<div class="col-xs-4 col-md-4">
+    <div class="thumbnail" style="">    
       <%-- <img src="/images/uploadFiles/../../images/uploadFiles/${product.fileName }.jpg" alt=".."> --%>
       <img src="/images/uploadFiles/${product.fileName}" alt="..">
       <div class="caption">
@@ -243,7 +264,7 @@
       <div class="caption">
         <p>${product.prodName }</p>
         <p>가격 : ${product.price } 원</p>
-        <p><a href="/product/updateProduct?prodNo=${product.prodNo }" class="btn btn-primary" role="button">상품수정</a></p>                
+        <p><a href="/product/updateProduct?prodNo=${product.prodNo }" class="btn btn-success" role="button">상품수정</a></p>                
         </div>
       </div>
       </div>
@@ -290,7 +311,6 @@
 	
 	</div>
 	<jsp:include page="../common/pageNavigator_new2.jsp"/>
-
 
 
 

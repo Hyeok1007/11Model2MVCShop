@@ -31,6 +31,12 @@
         body {
             padding-top : 70px;
         }
+        
+        @keyframes flash { 0%, 20%, 40%, to { opacity: 1; } 10%, 30% { opacity: 0; } }
+ 
+  		  .test_obj {
+        animation: flash 3s infinite;
+    }
    	</style>
    	
      <!--  ///////////////////////// JavaScript ////////////////////////// -->
@@ -59,7 +65,7 @@
           <img src="/images/uploadFiles/ºÓ«Œ∏Ù2.jpg" alt="Second slide">
         </div>
         <div class="item">
-          <img data-src="holder.js/900x500/auto/#555:#333/text:Third slide" alt="Third slide">
+          <img src="/images/uploadFiles/banner.jpg" alt="Third slide">
         </div>
       </div>
       <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -74,7 +80,7 @@
   </div><!-- /example -->
   
 
-	<h3><i class="glyphicon glyphicon-star"></i>HIT ªÛ«∞<i class="glyphicon glyphicon-star"></i> </h3> 
+	<div class="test_obj"><h3><i class="glyphicon glyphicon-star"></i>HIT ªÛ«∞<i class="glyphicon glyphicon-star"></i> </h3></div>
 	<!-- ¬¸¡∂ : http://getbootstrap.com/css/   : container part..... -->
 	<div class="container">
         <div class="row">
@@ -86,7 +92,7 @@
  	   	</div>
  	   	
  	   	<div class="col-xs-6 col-md-4">
- 	   <a href="/product/getProduct?prodNo=${product.prodNo}" class="thumbnail">
+ 	   <a href="/product/getProduct?prodNo=10004" class="thumbnail">
       <img src="/images/uploadFiles/AHlbAAAAve37LwAD.jpg" alt="...">
  	   </a>
  	   </div>

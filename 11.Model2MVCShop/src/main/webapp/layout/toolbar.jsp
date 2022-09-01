@@ -104,10 +104,11 @@
 	                 
 	                 
 	                 <li><a href="#">etc...</a></li>
-	                </ul>	  	                
+	                 	                 
+	                </ul>              
 	               
-	             <ul class="nav navbar-nav navbar-right">
-	                <li><a href="#">·Î±×¾Æ¿ô</a></li>
+	             <ul class="nav navbar-nav navbar-right">     
+	             	<li><a href="#">·Î±×¾Æ¿ô</a></li>
 	            </ul>
 	         
 		</div>

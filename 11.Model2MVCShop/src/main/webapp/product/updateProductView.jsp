@@ -80,7 +80,7 @@
 	}
 
 	$(function() {
-		$("button.btn.btn-primary").on("click", function() {
+		$("button.btn.btn-success").on("click", function() {
 			console.log('aaa');
 			fncUpdateProduct();
 		});
@@ -152,13 +152,13 @@
 			 	<label for="price" class="col-sm-offset-1 col-sm-3 control-label">상품이미지</label>	
 			 	<div class="col-sm-4">
 					<img src="/images/uploadFiles/${product.fileName}" alt="..">			 			    	
-		      		<input type="file" class="form-control" id="fileName" name="fileName">
+		      		<input type="file" class="form-control" id="fileName" name="fileName" value="${product.fileName}">
 		    	</div>
 		 	</div>
 		 	
 		 	 <div class="form-group">
 		  	  <div class="col-sm-offset-4  col-sm-4 text-center">
-		    	<button type="button" class="btn btn-primary">수 &nbsp;정</button>
+		    	<button type="button" class="btn btn-success">수 &nbsp;정</button>
 			  	<a class="btn btn-primary btn" href="#" role="button">취 &nbsp;소</a>
 		    	</div>
 		  </div>

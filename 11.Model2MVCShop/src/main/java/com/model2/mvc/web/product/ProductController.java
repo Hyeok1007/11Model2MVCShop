@@ -57,25 +57,16 @@ public class ProductController {
 		return "redirect:/product/addProductView.jsp";
 	}
 
-//	//@RequestMapping("/addProduct.do")
-//	@RequestMapping(value="addProduct", method=RequestMethod.POST)
-//	public String addProduct(@ModelAttribute("product") Product product, MultipartFile[] files, Model model) throws Exception {
-//		
-//		
-//		System.out.println("/product/addProduct : POST");
-//		//Business Logic
-//		productService.addProduct(product);
-//		
-//		String uploadFolder = "C:\\Users\\bitcamp\\git\\01.ModelMVCShop\\01.Model2MVCShop(stu)\\src\\main\\webapp\\images\\uploadFiles";
-//		
-//		File saveFile = new File();
-//		
-//		try {
-//			
-//		}
-//		
-//		return "forward:/product/addProduct.jsp";
-//	}
+	//@RequestMapping("/addProduct.do")
+	@RequestMapping(value="addProduct", method=RequestMethod.POST)
+	public String addProduct(@ModelAttribute("product") Product product, Model model) throws Exception {		
+		
+		System.out.println("/product/addProduct : POST");
+		//Business Logic
+		productService.addProduct(product);		
+
+		return "forward:/product/addProduct.jsp";
+	}
 	
 	//@RequestMapping(value="/getProduct.do")
 	@RequestMapping(value="getProduct", method=RequestMethod.GET)

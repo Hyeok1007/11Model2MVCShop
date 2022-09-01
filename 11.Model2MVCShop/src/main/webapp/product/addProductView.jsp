@@ -139,6 +139,8 @@
 				</div>					
 			</div>
 			
+			
+		
 			<div class="form-group">
 				<label for="prodDetail" class="col-sm-offset-1 col-sm-3 control-label">상품상세정보</label>
 				<div class="col-sm-4">
