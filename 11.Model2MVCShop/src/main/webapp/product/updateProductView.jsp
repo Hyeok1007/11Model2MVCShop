@@ -58,7 +58,7 @@
 			alert("상품명은 반드시 입력하여야 합니다.");
 			return;
 		}
-		if (detail == null || detail.length < 1) {
+		 if (detail == null || detail.length < 1) {
 			alert("상품상세정보는 반드시 입력하여야 합니다.");
 			return;
 		}
@@ -80,8 +80,8 @@
 	}
 
 	$(function() {
-		$("td.ct_btn01:contains('수정')").on("click", function() {
-			alert($("td.ct_btn01:contains('수정')").html());
+		$("button.btn.btn-primary").on("click", function() {
+			console.log('aaa');
 			fncUpdateProduct();
 		});
 	});
@@ -107,6 +107,8 @@
 		
 		<form class="form-horizontal">
 			
+			<input type="hidden" name="prodNo" value="${product.prodNo }" />
+			
 			<div class="form-group">
 		    	<label for="prodName" class="col-sm-offset-1 col-sm-3 control-label">상 품 명<img
 					src="/images/ct_icon_red.gif" width="7" height="7"
@@ -122,7 +124,7 @@
 					align="absmiddle" /></label>
 		    	<div class="col-sm-4">
 		      		<%-- <input type="text" class="form-control" id="prodDetail" name="prodDetail" value="${product.prodDetail }" placeholder="상품상세정보는 필수입니다"> --%> 
-		      		 <textarea class="form-control" id="prodDetail" rows="3" placeholder="상품상세정보는 필수입니다"></textarea>
+		      		 <input type="text" class="form-control" id="prodDetail" name="prodDetail" value="${product.prodDetail }" placeholder="상품명은 필수입니다">
 		    	</div>
 		  	</div>
 		  	
@@ -148,23 +150,21 @@
 		 	
 		 	<div class="form-group">
 			 	<label for="price" class="col-sm-offset-1 col-sm-3 control-label">상품이미지</label>	
-			 	<div class="col-sm-4">	    	
+			 	<div class="col-sm-4">
+					<img src="/images/uploadFiles/${product.fileName}" alt="..">			 			    	
 		      		<input type="file" class="form-control" id="fileName" name="fileName">
 		    	</div>
 		 	</div>
 		 	
 		 	 <div class="form-group">
 		  	  <div class="col-sm-offset-4  col-sm-4 text-center">
-		    	<button type="button" class="btn btn-primary"  >수 &nbsp;정</button>
+		    	<button type="button" class="btn btn-primary">수 &nbsp;정</button>
 			  	<a class="btn btn-primary btn" href="#" role="button">취 &nbsp;소</a>
 		    	</div>
 		  </div>
 		</form>
 		
-
-		<%-- <input type="hidden" name="prodNo" value="${product.prodNo }" /> --%>
-
-			
+		
 		</div>
 		<!--  화면구성 div Start //////// -->
 	

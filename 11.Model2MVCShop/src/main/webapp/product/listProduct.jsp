@@ -37,6 +37,15 @@
 	  body {
             padding-top : 50px;
         }
+        
+       img {
+       		max-with: 100%;
+       		height: auto; 
+        }
+        
+       .thumbnail{
+       	position: relative;
+       }
     </style>
     
 	<script type="text/javascript">
@@ -55,6 +64,14 @@
 			//self.location ="/product/getProduct?prodNo="+$(this).text().trim();
 			self.location ="/product/getProduct?prodNo="+$(this).parent().attr("id").trim();
 		}); */
+		
+		$(function() {
+			$("button.btn.btn-primary").on("click", function(){
+				console.log('aaa');
+				self.location ="/product/getProduct?prodNo="+$(this).parent().attr("id").trim();
+			});		
+		});
+		
 		
 		if(${param.menu == 'search'}){
 		
@@ -138,9 +155,19 @@
 	
 	<div class="container">
 	
+	<c:if test="${param.menu == 'search' }">
 	<div class="page-header text-info">
-		<h3>상품목록조회</h3>
+		
+		<h3>상품목록조회</h3>		
 	</div>
+	</c:if>
+	
+	<c:if test="${param.menu == 'manage' }">
+	<div class="page-header text-info">
+		
+		<h3>판매상품관리</h3>		
+	</div>
+	</c:if>
 	
 	<div class="row">
 		<div class="col-md-6 text-left">
@@ -168,12 +195,66 @@
 			<button type="button" class="btn btn-default">검색</button>		
 			
 			<input type="hidden" id="currentPage" name="currentPage" value=""/>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
 			
 			</form>
-	</div>
-</div>
 
-	<table class="table table-hover table-striped">
+		</div>
+	</div>
+	
+	<br/>
+	<br/>
+	<br/>
+<c:if test="${param.menu == 'search' }">
+<div class="row">
+	<c:set var="i" value="0"/>
+	<c:forEach var="product" items="${list }">
+	<c:set var="i" value="${i+1 }" />
+	<div class="col-md-6 col-md-4">
+    <div class="thumbnail">    
+      <%-- <img src="/images/uploadFiles/../../images/uploadFiles/${product.fileName }.jpg" alt=".."> --%>
+      <img src="/images/uploadFiles/${product.fileName}" alt="..">
+      <div class="caption">
+        <p>${product.prodName }</p>
+        <p>가격 : ${product.price } 원</p>
+        
+        <p><a href="/product/getProduct?prodNo=${product.prodNo }" class="btn btn-primary" role="button">상품보기</a></p>
+                
+        </div>
+      </div>
+      </div>
+      </c:forEach>      
+</div>
+</c:if>
+
+
+<c:if test="${param.menu == 'manage' }">
+<div class="row">
+	<c:set var="i" value="0"/>
+	<c:forEach var="product" items="${list }">
+	<c:set var="i" value="${i+1 }" />
+	<div class="col-md-6 col-md-4">
+    <div class="thumbnail">    
+      <%-- <img src="/images/uploadFiles/../../images/uploadFiles/${product.fileName }.jpg" alt=".."> --%>
+      <img src="/images/uploadFiles/${product.fileName}" alt="..">
+      <div class="caption">
+        <p>${product.prodName }</p>
+        <p>가격 : ${product.price } 원</p>
+        <p><a href="/product/updateProduct?prodNo=${product.prodNo }" class="btn btn-primary" role="button">상품수정</a></p>                
+        </div>
+      </div>
+      </div>
+      </c:forEach>      
+</div>
+</c:if>
+
+
+
+
+	<%-- <table class="table table-hover table-striped">
 	
 		<thead>
 			<tr>
@@ -203,16 +284,11 @@
 				<td align="left">${product.proTranCode }</td>				
 			</tr>
 			</c:forEach>
-			
+
 		</tbody>
-	</table>
+	</table> --%>
 	
-	</div>	
-  	<tr>
-	<td colspan="11" id="${product.prodNo}" bgcolor="D6D7D6" height="1"></td>
-	</tr>
-
-
+	</div>
 	<jsp:include page="../common/pageNavigator_new2.jsp"/>
 
 

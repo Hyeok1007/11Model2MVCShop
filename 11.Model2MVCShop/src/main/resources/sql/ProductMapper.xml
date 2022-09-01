@@ -28,7 +28,7 @@
 	 <!-- SQL : SELECT ONE -->
 	 <select 	id="getProduct"	parameterType="int"	resultMap="productSelectMap">
 		SELECT
-		prod_no , prod_name , image_file , prod_detail ,  manufacture_day ,  price , reg_date 		
+		prod_no , prod_name , image_file , prod_detail ,  manufacture_day ,  price , reg_date	
 		FROM product 
 		WHERE prod_no = #{value}
 	 </select>
@@ -50,7 +50,7 @@
 	<select  id="getProductList"  parameterType="search"	resultMap="productSelectMap">
 	  	SELECT *
 	  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
-	  					FROM		(	SELECT prod_no, prod_name , price , reg_date, prod_detail
+	  					FROM		(	SELECT prod_no, prod_name , price , reg_date, prod_detail, image_file
 											FROM product
 											<if test="searchCondition != null">
 												<where>
@@ -58,7 +58,7 @@
 										 				prod_no = #{searchKeyword}
 													</if>
 													<if test="searchCondition == 1 and searchKeyword !='' ">
-										 				prod_name = #{searchKeyword}
+										 				prod_name LIKE '%' || #{searchKeyword} || '%'
 													</if>
 													<if test="searchCondition == 2 and searchKeyword !='' ">
 														price = #{price}

@@ -142,7 +142,7 @@
 			<div class="form-group">
 				<label for="prodDetail" class="col-sm-offset-1 col-sm-3 control-label">상품상세정보</label>
 				<div class="col-sm-4">
-					<input type="text" class="form-control" id="prodDetail" name="prodDetail" placeholder="상품상세정보는 필수입니다">
+					<input type="text" class="form-control" id="prodDetail" name="prodDetail" placeholder="상품명은 필수입니다">
 				</div>		
 			</div>
 			

@@ -82,7 +82,7 @@ public class UserController {
 		User user = userService.getUser(userId);
 		// Model °ú View ¿¬°á
 		model.addAttribute("user", user);
-		
+				
 		return "forward:/user/updateUser.jsp";
 	}
 
@@ -116,6 +116,8 @@ public class UserController {
 		System.out.println("/user/login : POST");
 		//Business Logic
 		User dbUser=userService.getUser(user.getUserId());
+		
+		System.out.println(user);
 		
 		if( user.getPassword().equals(dbUser.getPassword())){
 			session.setAttribute("user", dbUser);

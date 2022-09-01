@@ -126,7 +126,7 @@ public class ProductController {
 	public String updateProduct(@ModelAttribute("product") Product product, Model model, HttpSession session) throws Exception {
 		
 		System.out.println("/product/updateProduct : POST");
-		//Business Logic
+		//Business Logic	
 		productService.updateProduct(product);
 				
 		
@@ -134,6 +134,7 @@ public class ProductController {
 //		session.setAttribute("product", product);
 		model.addAttribute("product",product);
 		
+		System.out.println("컨트롤러 잘 왔나? : "+product.getProdNo());
 //		return "redirect:/getProduct.do?prodNo="+product.getProdNo();
 //		return "redirect:/getProduct?prodNo="+product.getProdNo();
 		return "redirect:/product/getProduct?prodNo="+product.getProdNo();

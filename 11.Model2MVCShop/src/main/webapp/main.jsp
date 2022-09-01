@@ -84,16 +84,42 @@
     	  <img src="/images/uploadFiles/AHlbAAAAtBqyWAAA.jpg" alt="...">
  	   	</a>
  	   	</div>
+ 	   	
  	   	<div class="col-xs-6 col-md-4">
  	   <a href="/product/getProduct?prodNo=${product.prodNo}" class="thumbnail">
       <img src="/images/uploadFiles/AHlbAAAAve37LwAD.jpg" alt="...">
  	   </a>
  	   </div>
+ 	   
  	   <div class="col-xs-6 col-md-4">
  	   <a href="/product/getProduct?prodNo=10001" class="thumbnail">
       <img src="/images/uploadFiles/BHlbAAAAvetFNwAA.jpg" alt="...">
  	   </a>
-	  </div>  
+	  </div>
+	  
+	  <div class="col-xs-6 col-md-4">  	 	
+ 	  	  <a href="/product/getProduct?prodNo=10003" class="thumbnail">
+    	  <img src="/images/uploadFiles/AHlbAAAAve1WwgAC.jpg" alt="...">
+ 	   	</a>
+ 	   	</div>
+ 	   	
+ 	   	<div class="col-xs-6 col-md-4">  	 	
+ 	  	  <a href="/product/getProduct?prodNo=10000" class="thumbnail">
+    	  <img src="/images/uploadFiles/AHlbAAAAtBqyWAAA.jpg" alt="...">
+ 	   	</a>
+ 	   	</div>
+ 	   	
+ 	   	<div class="col-xs-6 col-md-4">  	 	
+ 	  	  <a href="/product/getProduct?prodNo=10000" class="thumbnail">
+    	  <img src="/images/uploadFiles/AHlbAAAAtBqyWAAA.jpg" alt="...">
+ 	   	</a>
+ 	   	</div>
+ 	   	
+ 	   	<div class="col-xs-6 col-md-4">  	 	
+ 	  	  <a href="/product/getProduct?prodNo=10000" class="thumbnail">
+    	  <img src="/images/uploadFiles/AHlbAAAAtBqyWAAA.jpg" alt="...">
+ 	   	</a>
+ 	   	</div> 	   	 	   	
 	</div>
    </div>
 
